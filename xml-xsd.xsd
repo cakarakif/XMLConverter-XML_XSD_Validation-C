@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+    <xs:attribute name="Code">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:pattern value="[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+  <!-- her dersin kodu için 'attribute' oluşturuldu/istendi ve 'restriction' tanımlandı.('ref' olarak kullanıldı) -->
+  <!-- Diğer bölümler için gerekli 'restriction'lar aşağıda tanımlandı. -->
+  <xs:element name="Lectures">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Course">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Student">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="StudentId" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:pattern value="[0-9]{10}"/>
+                             </xs:restriction>
+					     </xs:simpleType>					
+					</xs:element>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="Surname" type="xs:string" />
+                    <xs:element name="Course-Code" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:string">
+                                 <xs:pattern value="[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]"/>
+                             </xs:restriction>
+					     </xs:simpleType>					
+					</xs:element>
+                    <xs:element name="Course-Credit" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="10"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="MID1">
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="100"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="MID2" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="100"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="HW1" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="100"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="HW2" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="100"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="HW3" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="100"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="Final" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:integer">
+                                 <xs:minInclusive value="0"/>
+                                 <xs:maxInclusive value="100"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="Grade" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:string">
+                                 <xs:pattern value="([A-F])*"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                    <xs:element name="Status" >
+					     <xs:simpleType>
+					         <xs:restriction base="xs:string">
+                                     <xs:enumeration value="Successful"/>
+                                     <xs:enumeration value="Failed"/>
+                                     <xs:enumeration value="Absent"/>
+                             </xs:restriction>
+					     </xs:simpleType>
+					</xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute ref="Code" use="required" />
+			<!-- 'attribute' eklenip ref'e gönderildi. -->
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
